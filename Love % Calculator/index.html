@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-color: #85da05;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+        }
+        .main-heading{
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            word-spacing: 5px;
+            color: #adff2f;
+            padding: 10px 20px;
+        }
+        .parent{
+            min-height: 400px;
+            padding: 20px;
+            border: 1px solid rgb(68, 68, 68);
+            background-color: rgb(37, 37, 37);
+            text-align: center;
+            display: grid;
+            border-radius: 5px;
+        }
+        button{
+            margin: 30px 0;
+            padding: 9px 20px;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            &:hover{
+                background-color: #adff2f;
+                box-shadow: 5px 5px 15px 3px #adff2f;
+                scale: 1.1;
+            }
+        }
+        form div{
+            padding: 10px;
+            & label{
+                font-size: 20px;
+                letter-spacing: 0.3px;
+            }
+            & input{
+                font-size: 18px;
+                outline: none;
+                padding: 2px 5px;
+                background-color: rgb(211, 211, 211);
+                border: none;
+                border-radius: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parent">
+        <h1 class="main-heading">Calculator ❤️Love Percentage</h1>
+        <form>
+            <div>
+                <label for="Boy">Write here a Boy name:</label>
+                <input type="text" id="Boy" name="Boy" required>
+            </div>
+
+            <div>
+                <label for="Girl">Write here a Girl name:</label>
+                <input type="text" id="Girl" name="Girl" required>
+            </div>
+
+            <button type="submit">CLICK HERE</button>
+        </form>
+        <h2 id="result"></h2>
+    </div>
+
+
+    <script>
+
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit',(evt)=>{
+            evt.preventDefault();
+            const boy = document.getElementById("Boy");
+            const girl = document.getElementById("Girl");
+
+            const l1 = boy.value.length;
+            const l2 = girl.value.length;
+            
+            let result = Math.pow(l1+l2,2)%101;
+            document.getElementById('result').innerHTML=`<h2>Result: ${result}%.<h2>`;
+
+            form.reset();
+        })
+
+        
+    </script>
+</body>
+</html>
