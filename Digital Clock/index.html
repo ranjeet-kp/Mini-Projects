@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-color: #202020;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
+        }
+        #time{
+            font-size: 50px;
+            background-color: rgb(49, 49, 49);
+            padding: 30px 50px;
+            border: 1px solid rgb(255, 174, 0);
+            border-radius: 5px;
+            box-shadow: 5px 5px 10px 1px orange;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="time"></div>
+
+    <script>
+
+        let result = document.querySelector("#time");
+        setInterval(()=>{
+            let date = new Date();
+            result.textContent = date.toLocaleTimeString()
+
+        },1000);
+        
+    </script>
+</body>
+</html>
