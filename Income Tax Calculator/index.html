@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            background-color: #202020;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
+        }
+        .main-heading{
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-decoration: underline;
+            word-spacing: 5px;
+            padding: 10px 20px;
+        }
+        .parent{
+            min-height: 500px;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border: 1px solid rgb(68, 68, 68);
+            background-color: rgb(37, 37, 37);
+            text-align: center;
+            border-radius: 5px;
+            display: grid;
+        }
+        button{
+            margin-top: 50px;
+            padding: 9px 20px;
+            border: none;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            &:hover{
+                background-color: #adff2f;
+                box-shadow: 5px 4px 15px 5px #adff2f;
+                scale: 1.1;
+            }
+        }
+        label{
+            font-size: 22px;
+        }
+        input{
+            font-size: 16px;
+            outline: none;
+            padding: 2px 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="parent">
+        <h1 class="main-heading">Income Tax Calculator</h1>
+        
+        <form>
+
+            <div>
+                <label for="Income">Enter Your Income : </label>
+                <input type="number" id="Income" name="Income" required>
+            </div>
+
+            <button type="submit">Calculate</button>
+
+        </form>
+
+        <h2 id="tax-amount">Total Tax:</h2>
+    </div>
+
+
+    <script>
+
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (evt)=>{
+            evt.preventDefault();
+            const income = document.querySelector('#Income');
+            const amount = parseInt(income.value);
+            console.log(amount);
+            
+            const result = document.querySelector('#tax-amount');
+            let totalTax = 0;
+
+            if(amount<=1200000){
+                totalTax = 0;
+            }else if(amount<=1600000){
+                totalTax = (amount-1200000)*0.15;
+            }else if(amount<=2000000){
+                totalTax = (amount-1600000)*0.20+60000;
+            }else if(amount<=2400000){
+                totalTax = (amount-2000000)*0.15+60000+80000;
+            }else{
+                totalTax = (amount-2400000)*0.30 + 60000+ 80000+ 100000;
+            }
+
+            result.textContent=`Tax Pay: ${totalTax} Pay Amount`;
+
+            form.reset();
+        })
+
+        
+    </script>
+</body>
+</html>
